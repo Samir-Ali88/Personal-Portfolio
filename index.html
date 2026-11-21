@@ -262,7 +262,7 @@
       </div>
     </section>
 
-    <!-- SKILLS SECTION -->
+   <!-- SKILLS SECTION -->
     <section id="skills" class="py-24 px-5 sm:px-8">
       <div class="max-w-6xl mx-auto">
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 reveal">
@@ -275,6 +275,7 @@
           <div class="flex flex-wrap gap-2" role="tablist" aria-label="Filter skills">
             <button type="button" data-filter="all" class="skill-filter active px-3.5 py-1.5 rounded-xl font-mono text-xs border transition-all">All</button>
             <button type="button" data-filter="languages" class="skill-filter px-3.5 py-1.5 rounded-xl font-mono text-xs border transition-all">Languages</button>
+            <button type="button" data-filter="web" class="skill-filter px-3.5 py-1.5 rounded-xl font-mono text-xs border transition-all">Web Dev</button>
             <button type="button" data-filter="systems" class="skill-filter px-3.5 py-1.5 rounded-xl font-mono text-xs border transition-all">Systems &amp; Net</button>
             <button type="button" data-filter="core" class="skill-filter px-3.5 py-1.5 rounded-xl font-mono text-xs border transition-all">Core CS</button>
           </div>
@@ -318,7 +319,52 @@
             <p class="text-sm text-slate-400 mt-1">Shell workflows, POSIX APIs, process management, and cybersecurity tooling.</p>
           </div>
 
-          <div data-category="languages" class="skill-card spotlight-card tilt-card reveal p-5 rounded-2xl bg-surface/80 border border-white/10 hover:border-amber-400/40 transition-all duration-300">
+          <div data-category="web" class="skill-card spotlight-card tilt-card reveal p-5 rounded-2xl bg-surface/80 border border-white/10 hover:border-orange-400/40 transition-all duration-300">
+            <div class="flex items-center justify-between mb-3">
+              <span class="w-10 h-10 rounded-xl bg-orange-500/15 border border-orange-400/30 flex items-center justify-center font-mono text-sm font-bold text-orange-300">&lt;/&gt;</span>
+              <span class="font-mono text-[11px] text-slate-400">Frontend</span>
+            </div>
+            <h3 class="font-display font-semibold text-white text-lg">HTML</h3>
+            <p class="text-sm text-slate-400 mt-1">Semantic markup, accessible page structure, and modern web layouts.</p>
+          </div>
+
+          <div data-category="web" class="skill-card spotlight-card tilt-card reveal reveal-delay-1 p-5 rounded-2xl bg-surface/80 border border-white/10 hover:border-sky-400/40 transition-all duration-300">
+            <div class="flex items-center justify-between mb-3">
+              <span class="w-10 h-10 rounded-xl bg-sky-500/15 border border-sky-400/30 flex items-center justify-center font-mono text-sm font-bold text-sky-300">CSS</span>
+              <span class="font-mono text-[11px] text-slate-400">Styling</span>
+            </div>
+            <h3 class="font-display font-semibold text-white text-lg">CSS</h3>
+            <p class="text-sm text-slate-400 mt-1">Responsive design, Flexbox, Grid, Tailwind CSS, and smooth UI animations.</p>
+          </div>
+
+          <div data-category="web" class="skill-card spotlight-card tilt-card reveal reveal-delay-2 p-5 rounded-2xl bg-surface/80 border border-white/10 hover:border-yellow-400/40 transition-all duration-300">
+            <div class="flex items-center justify-between mb-3">
+              <span class="w-10 h-10 rounded-xl bg-yellow-500/15 border border-yellow-400/30 flex items-center justify-center font-mono text-sm font-bold text-yellow-300">JS</span>
+              <span class="font-mono text-[11px] text-slate-400">Language</span>
+            </div>
+            <h3 class="font-display font-semibold text-white text-lg">JavaScript</h3>
+            <p class="text-sm text-slate-400 mt-1">Interactive DOM logic, async APIs, dynamic web apps, and client-side scripting.</p>
+          </div>
+
+          <div data-category="web" class="skill-card spotlight-card tilt-card reveal reveal-delay-3 p-5 rounded-2xl bg-surface/80 border border-white/10 hover:border-cyan-400/40 transition-all duration-300">
+            <div class="flex items-center justify-between mb-3">
+              <span class="w-10 h-10 rounded-xl bg-cyan-500/15 border border-cyan-400/30 flex items-center justify-center font-mono text-sm font-bold text-cyan-300">Re</span>
+              <span class="font-mono text-[11px] text-slate-400">Library</span>
+            </div>
+            <h3 class="font-display font-semibold text-white text-lg">React</h3>
+            <p class="text-sm text-slate-400 mt-1">Component-based UI architecture, hooks, state management, and single-page apps.</p>
+          </div>
+
+          <div data-category="web" class="skill-card spotlight-card tilt-card reveal p-5 rounded-2xl bg-surface/80 border border-white/10 hover:border-amber-400/40 transition-all duration-300">
+            <div class="flex items-center justify-between mb-3">
+              <span class="w-10 h-10 rounded-xl bg-amber-500/15 border border-amber-400/30 flex items-center justify-center font-mono text-sm font-bold text-amber-300">FB</span>
+              <span class="font-mono text-[11px] text-slate-400">BaaS / Cloud</span>
+            </div>
+            <h3 class="font-display font-semibold text-white text-lg">Firebase</h3>
+            <p class="text-sm text-slate-400 mt-1">Authentication, Firestore real-time databases, and fast web app hosting.</p>
+          </div>
+
+          <div data-category="languages" class="skill-card spotlight-card tilt-card reveal reveal-delay-1 p-5 rounded-2xl bg-surface/80 border border-white/10 hover:border-amber-400/40 transition-all duration-300">
             <div class="flex items-center justify-between mb-3">
               <span class="w-10 h-10 rounded-xl bg-amber-500/15 border border-amber-400/30 flex items-center justify-center font-mono text-sm font-bold text-amber-300">SQL</span>
               <span class="font-mono text-[11px] text-slate-400">Database</span>
@@ -327,7 +373,7 @@
             <p class="text-sm text-slate-400 mt-1">Relational data modeling, structured queries, and persistent storage.</p>
           </div>
 
-          <div data-category="systems" class="skill-card spotlight-card tilt-card reveal reveal-delay-1 p-5 rounded-2xl bg-surface/80 border border-white/10 hover:border-cyan-400/40 transition-all duration-300">
+          <div data-category="systems" class="skill-card spotlight-card tilt-card reveal reveal-delay-2 p-5 rounded-2xl bg-surface/80 border border-white/10 hover:border-cyan-400/40 transition-all duration-300">
             <div class="flex items-center justify-between mb-3">
               <span class="w-10 h-10 rounded-xl bg-cyan-500/15 border border-cyan-400/30 flex items-center justify-center font-mono text-sm font-bold text-cyan-300">TCP</span>
               <span class="font-mono text-[11px] text-slate-400">Protocols</span>
@@ -336,7 +382,7 @@
             <p class="text-sm text-slate-400 mt-1">TCP/IP sockets, client-server protocols, reconnaissance, and packet flow.</p>
           </div>
 
-          <div data-category="core" class="skill-card spotlight-card tilt-card reveal reveal-delay-2 p-5 rounded-2xl bg-surface/80 border border-white/10 hover:border-violet-400/40 transition-all duration-300">
+          <div data-category="core" class="skill-card spotlight-card tilt-card reveal reveal-delay-3 p-5 rounded-2xl bg-surface/80 border border-white/10 hover:border-violet-400/40 transition-all duration-300">
             <div class="flex items-center justify-between mb-3">
               <span class="w-10 h-10 rounded-xl bg-violet-500/15 border border-violet-400/30 flex items-center justify-center font-mono text-sm font-bold text-violet-300">O(n)</span>
               <span class="font-mono text-[11px] text-slate-400">Algorithms</span>
@@ -345,7 +391,7 @@
             <p class="text-sm text-slate-400 mt-1">Data structures, greedy algorithms, binary search, and contest problem solving.</p>
           </div>
 
-          <div data-category="systems" class="skill-card spotlight-card tilt-card reveal reveal-delay-3 p-5 rounded-2xl bg-surface/80 border border-white/10 hover:border-fuchsia-400/40 transition-all duration-300">
+          <div data-category="systems" class="skill-card spotlight-card tilt-card reveal p-5 rounded-2xl bg-surface/80 border border-white/10 hover:border-fuchsia-400/40 transition-all duration-300">
             <div class="flex items-center justify-between mb-3">
               <span class="w-10 h-10 rounded-xl bg-fuchsia-500/15 border border-fuchsia-400/30 flex items-center justify-center font-mono text-sm font-bold text-fuchsia-300">Git</span>
               <span class="font-mono text-[11px] text-slate-400">Workflow</span>
