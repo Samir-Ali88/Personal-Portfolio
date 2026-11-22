@@ -4,13 +4,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Samir Ali (SOLO) — CSE Student at IIUC, Competitive Programmer, and Cybersecurity Enthusiast." />
+  <meta name="description" content="Samir Ali (SOLO) — CSE Student at IIUC, Competitive Programmer, Web Developer & Cybersecurity Learner." />
   <title>SOLO — Samir Ali | Portfolio</title>
 
-  <!-- Google Fonts -->
+  <!-- Google Fonts: Permanent Marker (comic/brush display) + Plus Jakarta Sans + JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600;700&family=Permanent+Marker&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -20,26 +20,18 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Inter', 'system-ui', 'sans-serif'],
-            display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+            sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+            marker: ['Permanent Marker', 'cursive'],
             mono: ['JetBrains Mono', 'monospace'],
           },
           colors: {
-            night: '#03050c',
-            surface: '#0a0f1f',
-            cyanGlow: '#06b6d4',
-            violetGlow: '#8b5cf6',
-            fuchsiaGlow: '#ec4899',
-            emeraldGlow: '#10b981',
-          },
-          animation: {
-            'float': 'float 6s ease-in-out infinite',
-          },
-          keyframes: {
-            float: {
-              '0%, 100%': { transform: 'translateY(0px)' },
-              '50%': { transform: 'translateY(-10px)' },
-            },
+            ink: '#0b0b0f',
+            card: '#14141b',
+            cardHover: '#1a1a24',
+            limePop: '#c8ff00',
+            purplePop: '#7c3aed',
+            skyPop: '#38bdf8',
+            orangePop: '#ff6b35',
           },
         },
       },
@@ -50,602 +42,561 @@
   <link rel="stylesheet" href="css/custom.css" />
 </head>
 
-<body class="bg-night text-slate-200 font-sans antialiased selection:bg-cyan-500/30 selection:text-cyan-200 overflow-x-hidden">
+<body class="bg-ink text-white font-sans antialiased selection:bg-limePop selection:text-ink overflow-x-hidden">
 
-  <!-- Scroll Progress Bar -->
-  <div id="scroll-progress" class="fixed top-0 left-0 h-[3px] w-0 bg-gradient-to-r from-cyan-400 via-violet-500 to-fuchsia-500 z-50 transition-all duration-75"></div>
+  <!-- Top Scroll Progress Bar -->
+  <div id="scroll-progress" class="fixed top-0 left-0 h-[3px] w-0 bg-limePop z-50 transition-all duration-75"></div>
 
-  <!-- Deep Night Sky Backdrop (Subtle, Non-Shiny) -->
-  <div class="fixed inset-0 -z-20 pointer-events-none night-sky-bg"></div>
+  <!-- Top-Left Organic Purple Splash (matching reference) -->
+  <div class="pointer-events-none fixed top-0 left-0 -z-10 w-[340px] sm:w-[460px] opacity-90">
+    <svg viewBox="0 0 420 260" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto">
+      <path d="M-20 -20H370C340 50 280 95 205 110C125 126 75 115 45 165C22 203 10 230 -20 245V-20Z" fill="#7c3aed" />
+      <circle cx="245" cy="142" r="8" fill="#7c3aed" />
+      <circle cx="272" cy="126" r="4.5" fill="#7c3aed" />
+    </svg>
+  </div>
 
-  <!-- Twinkling Starfield & Shooting Stars Canvas -->
-  <canvas id="bg-canvas" class="fixed inset-0 -z-10 pointer-events-none"></canvas>
-
-  <!-- Header / Navigation -->
+  <!-- NAVBAR -->
   <header id="navbar" class="fixed top-0 inset-x-0 z-40 transition-all duration-300">
-    <div class="max-w-6xl mx-auto px-5 sm:px-8">
-      <div class="mt-4 flex items-center justify-between px-5 py-3 rounded-2xl glass-nav border border-white/10 shadow-lg shadow-black/50">
-        <!-- Logo -->
-        <a href="#about" class="group flex items-center gap-2.5 focus:outline-none">
-          <span class="relative flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-400 via-violet-500 to-fuchsia-500 p-[1.5px] shadow-md shadow-violet-500/20 transition-transform duration-300 group-hover:scale-105">
-            <span class="flex h-full w-full items-center justify-center rounded-[10px] bg-night font-mono text-sm font-bold text-cyan-300">
-              &gt;_
-            </span>
-          </span>
-          <span class="font-display text-lg font-bold tracking-wider text-white">
-            SOLO
-          </span>
-        </a>
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 py-4 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#home" class="font-marker text-2xl sm:text-3xl tracking-wider text-white hover:text-limePop transition-colors">
+        SOLO
+      </a>
 
-        <!-- Desktop Nav -->
-        <nav aria-label="Primary Navigation" class="hidden md:flex items-center gap-1">
-          <a href="#about" class="nav-link px-4 py-2 rounded-xl text-sm font-medium text-slate-300 hover:text-white transition-colors">About</a>
-          <a href="#skills" class="nav-link px-4 py-2 rounded-xl text-sm font-medium text-slate-300 hover:text-white transition-colors">Skills</a>
-          <a href="#projects" class="nav-link px-4 py-2 rounded-xl text-sm font-medium text-slate-300 hover:text-white transition-colors">Projects</a>
-          <a href="#contact" class="nav-link px-4 py-2 rounded-xl text-sm font-medium text-slate-300 hover:text-white transition-colors">Contact</a>
-        </nav>
+      <!-- Desktop Nav -->
+      <nav aria-label="Primary Navigation" class="hidden md:flex items-center gap-7 px-6 py-2.5 rounded-full bg-card/85 backdrop-blur-md border border-white/10 shadow-xl shadow-black/40">
+        <a href="#home" class="nav-link active text-sm font-semibold text-white/80 hover:text-white transition-colors">Home</a>
+        <a href="#spotlight" class="nav-link text-sm font-semibold text-white/80 hover:text-white transition-colors">Live App</a>
+        <a href="#projects" class="nav-link text-sm font-semibold text-white/80 hover:text-white transition-colors">Projects</a>
+        <a href="#skills" class="nav-link text-sm font-semibold text-white/80 hover:text-white transition-colors">Skills</a>
+        <a href="#about" class="nav-link text-sm font-semibold text-white/80 hover:text-white transition-colors">About</a>
+        <a href="#contact" class="nav-link text-sm font-semibold text-white/80 hover:text-white transition-colors">Contact</a>
+      </nav>
 
-        <!-- Desktop CTA + Mobile Toggle -->
-        <div class="flex items-center gap-3">
-          <a href="https://github.com/Samir-Ali88" target="_blank" rel="noopener noreferrer"
-            class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-mono font-semibold text-white bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-400/50 transition-all duration-300">
-            <svg class="w-4 h-4 text-cyan-400" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
-            </svg>
-            GitHub
-          </a>
-
-          <!-- Mobile Hamburger -->
-          <button id="menu-toggle" type="button" aria-label="Toggle Menu" aria-expanded="false"
-            class="md:hidden p-2 rounded-xl text-slate-300 hover:text-white hover:bg-white/10 border border-white/10 transition-colors">
-            <svg id="menu-icon-open" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-            <svg id="menu-icon-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      <!-- Mobile Dropdown Menu -->
-      <div id="mobile-menu" class="hidden md:hidden mt-2 p-4 rounded-2xl glass-nav border border-white/10 shadow-2xl space-y-1">
-        <a href="#about" class="mobile-link block px-4 py-2.5 rounded-xl text-sm font-medium text-slate-200 hover:bg-white/10 hover:text-cyan-300 transition-colors">About</a>
-        <a href="#skills" class="mobile-link block px-4 py-2.5 rounded-xl text-sm font-medium text-slate-200 hover:bg-white/10 hover:text-cyan-300 transition-colors">Skills</a>
-        <a href="#projects" class="mobile-link block px-4 py-2.5 rounded-xl text-sm font-medium text-slate-200 hover:bg-white/10 hover:text-cyan-300 transition-colors">Projects</a>
-        <a href="#contact" class="mobile-link block px-4 py-2.5 rounded-xl text-sm font-medium text-slate-200 hover:bg-white/10 hover:text-cyan-300 transition-colors">Contact</a>
+      <!-- Right Action / Mobile Menu Button -->
+      <div class="flex items-center gap-3">
         <a href="https://github.com/Samir-Ali88" target="_blank" rel="noopener noreferrer"
-          class="mobile-link block px-4 py-2.5 rounded-xl text-sm font-mono font-medium text-cyan-300 hover:bg-white/10 transition-colors">
-          GitHub &rarr;
+          class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card/90 border border-white/15 hover:border-limePop text-xs font-mono font-bold text-white hover:text-limePop transition-all">
+          GitHub &#8599;
         </a>
+        <button id="menu-toggle" type="button" aria-label="Toggle Menu" aria-expanded="false"
+          class="md:hidden w-11 h-11 rounded-full bg-purplePop text-white flex items-center justify-center shadow-lg shadow-purplePop/30 active:scale-95 transition-transform">
+          <svg id="menu-icon-open" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+          <svg id="menu-icon-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
       </div>
+    </div>
+
+    <!-- Mobile Dropdown -->
+    <div id="mobile-menu" class="hidden md:hidden mx-5 mt-1 p-4 rounded-3xl bg-card/95 backdrop-blur-xl border border-white/10 shadow-2xl space-y-1">
+      <a href="#home" class="mobile-link block px-4 py-2.5 rounded-2xl text-sm font-semibold text-white hover:bg-white/10">Home</a>
+      <a href="#spotlight" class="mobile-link block px-4 py-2.5 rounded-2xl text-sm font-semibold text-white hover:bg-white/10">Live App</a>
+      <a href="#projects" class="mobile-link block px-4 py-2.5 rounded-2xl text-sm font-semibold text-white hover:bg-white/10">Projects</a>
+      <a href="#skills" class="mobile-link block px-4 py-2.5 rounded-2xl text-sm font-semibold text-white hover:bg-white/10">Skills</a>
+      <a href="#about" class="mobile-link block px-4 py-2.5 rounded-2xl text-sm font-semibold text-white hover:bg-white/10">About</a>
+      <a href="#contact" class="mobile-link block px-4 py-2.5 rounded-2xl text-sm font-semibold text-limePop hover:bg-white/10">Contact</a>
     </div>
   </header>
 
-  <main class="relative z-10">
+  <main class="max-w-6xl mx-auto px-5 sm:px-8 pt-28 pb-16 space-y-10">
 
-    <!-- HERO / ABOUT SECTION -->
-    <section id="about" class="min-h-screen flex items-center pt-28 pb-20 px-5 sm:px-8">
-      <div class="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+    <!-- ==================== HERO SECTION ==================== -->
+    <section id="home" class="relative pt-6 pb-10 lg:py-14">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
 
-        <!-- Left Content -->
+        <!-- Left Column -->
         <div class="lg:col-span-7 space-y-6 reveal">
-          <!-- Status Pill -->
-          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-400/25 text-cyan-300 font-mono text-xs tracking-wide">
-            <span class="relative flex h-2.5 w-2.5">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400"></span>
-            </span>
-            Available for collaborations &amp; projects
+          <!-- "Hey, I'm" + Doodle Arrow -->
+          <div class="flex items-center gap-2 font-marker text-2xl sm:text-3xl text-white/95">
+            <span>Hey,</span>
+            <svg class="w-6 h-6 text-white/70 translate-y-1" viewBox="0 0 28 28" fill="none">
+              <path d="M5 6C7 16 14 20 22 19M22 19L17 15M22 19L18 24" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <span>I'm</span>
           </div>
 
-          <!-- Heading -->
-          <div class="space-y-3">
-            <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.1]">
-              Hi, I'm
-              <span class="bg-gradient-to-r from-cyan-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent">
-                Samir.
-              </span>
+          <!-- Big Marker Name + Crown + Lime Brush Underline -->
+          <div class="relative inline-block">
+            <!-- Crown Doodle -->
+            <svg class="w-10 h-10 sm:w-12 sm:h-12 text-limePop absolute -top-8 -right-4 sm:-right-8 rotate-12 doodle-float" viewBox="0 0 48 48" fill="none">
+              <path d="M8 34L6 16L17 24L24 10L31 24L42 16L40 34H8Z" stroke="currentColor" stroke-width="3" stroke-linejoin="round" />
+              <path d="M10 39H38" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+            </svg>
+
+            <h1 class="font-marker text-6xl sm:text-7xl lg:text-8xl tracking-wide text-white leading-none -rotate-2">
+              SAMIR
             </h1>
 
-            <!-- Dynamic Typing Line -->
-            <div class="flex items-center gap-2 font-mono text-base sm:text-lg text-slate-300 min-h-[28px]">
-              <span class="text-fuchsia-400 select-none">$</span>
-              <span id="typed-text" class="text-cyan-300"></span>
-              <span class="typing-cursor inline-block w-[2px] h-5 bg-cyan-400"></span>
-            </div>
+            <!-- Lime Brushstroke Underline -->
+            <svg class="w-full h-5 mt-1 text-limePop" viewBox="0 0 320 20" fill="none" preserveAspectRatio="none">
+              <path d="M6 14C75 6 210 4 314 11" stroke="currentColor" stroke-width="7" stroke-linecap="round" />
+            </svg>
           </div>
 
-          <!-- Bio -->
-          <p class="text-slate-300/90 text-base sm:text-lg leading-relaxed max-w-2xl">
-            I'm a <span class="text-white font-medium">Computer Science &amp; Engineering</span> student at
-            <span class="text-cyan-300 font-medium">IIUC</span>, building strong foundations in systems,
-            algorithms, and networking. Outside of coursework, I train daily on
-            <span class="text-violet-300 font-medium">competitive programming</span> problems and follow a
-            <span class="text-fuchsia-300 font-medium">Linux &amp; Python</span> path toward
-            <span class="text-white font-medium">cybersecurity</span>.
-          </p>
+          <!-- Dynamic Role Subtitle -->
+          <div class="flex flex-wrap items-center gap-2 text-base sm:text-lg font-semibold text-white/85 pt-1">
+            <span>CSE Student</span>
+            <span class="text-limePop">&bull;</span>
+            <span id="typed-text" class="text-skyPop"></span>
+            <span class="typing-cursor inline-block w-[2.5px] h-5 bg-limePop"></span>
+          </div>
 
-          <!-- CTA Buttons -->
+          <!-- CTA Buttons (Exact Pill Style from Reference) -->
           <div class="flex flex-wrap items-center gap-4 pt-2">
             <a href="#projects"
-              class="group relative inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm text-white bg-gradient-to-r from-cyan-500 via-violet-500 to-fuchsia-500 shadow-lg shadow-violet-500/20 hover:shadow-cyan-500/35 hover:-translate-y-0.5 transition-all duration-300">
-              <span>Explore Projects</span>
-              <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
+              class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-limePop text-ink font-extrabold text-sm sm:text-base shadow-lg shadow-limePop/20 hover:scale-105 active:scale-95 transition-transform duration-200">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+              <span>View Projects</span>
             </a>
 
             <a href="#contact"
-              class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm text-slate-200 bg-white/5 hover:bg-white/10 border border-white/15 hover:border-cyan-400/50 hover:-translate-y-0.5 transition-all duration-300">
-              <span>Get in Touch</span>
+              class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-transparent text-white font-bold text-sm sm:text-base border-2 border-purplePop hover:bg-purplePop/20 hover:scale-105 active:scale-95 transition-all duration-200">
+              <span>Let's Talk</span>
+              <span>&#8599;</span>
             </a>
+
+            <!-- Playful Lightning Doodle -->
+            <svg class="hidden sm:block w-8 h-8 text-limePop doodle-float-slow ml-1" viewBox="0 0 32 32" fill="currentColor">
+              <path d="M18 2L6 18h8l-2 12 14-16h-8l0-12z" />
+            </svg>
           </div>
 
-          <!-- Social Links Row -->
-          <div class="flex items-center gap-3 pt-1">
-            <a href="https://github.com/Samir-Ali88" target="_blank" rel="noopener noreferrer" aria-label="GitHub"
-              class="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-400/50 text-slate-300 hover:text-cyan-300 transition-all duration-300">
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
-              </svg>
-            </a>
-            <a href="https://www.linkedin.com/in/imam-samir-ali/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
-              class="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-400/50 text-slate-300 hover:text-cyan-300 transition-all duration-300">
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
-              </svg>
-            </a>
-            <a href="https://www.facebook.com/share/1CMwsWVoQK/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"
-              class="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-400/50 text-slate-300 hover:text-cyan-300 transition-all duration-300">
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
-              </svg>
-            </a>
-          </div>
-
-          <!-- Quick Highlights -->
-          <div class="grid grid-cols-3 gap-4 pt-6 max-w-lg border-t border-white/10">
-            <div>
-              <p class="font-display text-2xl font-bold text-white">C / C++</p>
-              <p class="font-mono text-xs text-slate-400 mt-0.5">Systems &amp; CP</p>
-            </div>
-            <div>
-              <p class="font-display text-2xl font-bold text-white">Python</p>
-              <p class="font-mono text-xs text-slate-400 mt-0.5">Networking &amp; Sec</p>
-            </div>
-            <div>
-              <p class="font-display text-2xl font-bold text-white">Linux</p>
-              <p class="font-mono text-xs text-slate-400 mt-0.5">Sockets &amp; CLI</p>
-            </div>
+          <!-- Scroll Down Indicator -->
+          <div class="pt-4 hidden sm:flex items-center gap-2.5 text-xs font-mono text-white/50">
+            <span class="w-5 h-8 rounded-full border-2 border-white/40 flex justify-center pt-1.5">
+              <span class="w-1 h-2 rounded-full bg-limePop animate-bounce"></span>
+            </span>
+            <span>Scroll Down</span>
           </div>
         </div>
 
-        <!-- Right Portrait Visual -->
+        <!-- Right Column: Stylized Sticker Portrait + Speech Bubble -->
         <div class="lg:col-span-5 flex justify-center reveal reveal-delay-2">
-          <div class="relative group animate-float">
-            <!-- Subtle Rim Glow -->
-            <div class="absolute -inset-1 rounded-3xl bg-gradient-to-tr from-cyan-500/40 via-violet-500/40 to-fuchsia-500/40 opacity-50 blur-lg group-hover:opacity-80 transition-opacity duration-500"></div>
+          <div class="relative w-72 sm:w-80">
+            <!-- Speech Bubble ("LET'S BUILD SOMETHING AWESOME!") -->
+            <div class="absolute -top-8 -left-4 sm:-left-10 z-20 px-4 py-2.5 rounded-2xl bg-skyPop text-ink font-marker text-xs sm:text-sm leading-tight -rotate-6 shadow-xl doodle-float">
+              LET'S BUILD<br />SOMETHING<br />AWESOME!
+              <span class="absolute -bottom-2 right-6 w-4 h-4 bg-skyPop rotate-45"></span>
+            </div>
 
-            <!-- Glass Frame -->
-            <div class="relative p-2 rounded-3xl bg-surface/95 border border-white/15 shadow-2xl">
-              <div class="relative w-64 h-64 sm:w-80 sm:h-80 rounded-2xl overflow-hidden bg-slate-950">
+            <!-- Background Purple + Orange Comic Shapes -->
+            <div class="absolute -inset-3 rounded-[2.2rem] bg-purplePop rotate-3"></div>
+            <div class="absolute -bottom-3 -right-3 w-24 h-24 rounded-full bg-orangePop/90 -z-10"></div>
+
+            <!-- Portrait Card -->
+            <div class="relative rounded-[2rem] overflow-hidden border-4 border-ink bg-card shadow-2xl">
+              <div class="aspect-square w-full overflow-hidden bg-ink">
                 <img
                   id="profile-img"
-                  src="images/ok me.jpg"
-                  alt="Portrait of Samir Ali (SOLO)"
-                  class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                  src="images/ok.me.jpg"
+                  alt="Samir Ali"
+                  class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500"
                 />
-                <!-- Fallback Avatar (shown only if images/ok.me.jpg is not found) -->
-                <div id="profile-fallback" class="hidden absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950/60 p-6 text-center">
-                  <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-cyan-400 via-violet-500 to-fuchsia-500 flex items-center justify-center font-display text-3xl font-bold text-white shadow-lg mb-3">
-                    SA
-                  </div>
-                  <p class="font-mono text-xs text-cyan-300">SOLO-SAMIR</p>
-                  <p class="text-[11px] text-slate-400 mt-1">Place <code class="text-slate-200">ok.me.jpg</code> in <code class="text-slate-200">images/</code></p>
+                <div id="profile-fallback" class="hidden w-full h-full flex flex-col items-center justify-center bg-card p-6 text-center">
+                  <span class="font-marker text-5xl text-limePop">SOLO</span>
+                  <span class="text-xs font-mono text-white/60 mt-2">Add images/ok.me.jpg</span>
                 </div>
               </div>
-
-              <!-- Floating Badge -->
-              <div class="mt-3 flex items-center justify-between px-3 py-2 rounded-xl bg-white/5 border border-white/10">
+              <div class="px-4 py-3 bg-card flex items-center justify-between border-t border-white/10">
                 <div>
-                  <p class="font-mono text-xs font-semibold text-white">SOLO-SAMIR</p>
-                  <p class="font-mono text-[11px] text-cyan-300">BSc CSE &bull; IIUC</p>
+                  <p class="font-marker text-base text-white leading-none">SAMIR ALI</p>
+                  <p class="font-mono text-[11px] text-limePop mt-1">BSc CSE &bull; IIUC</p>
                 </div>
-                <span class="px-2.5 py-1 rounded-lg bg-emerald-500/15 border border-emerald-400/30 font-mono text-[11px] text-emerald-300">
-                  online
+                <span class="px-2.5 py-1 rounded-full bg-limePop/15 text-limePop font-mono text-[11px] font-bold">
+                  ONLINE
                 </span>
               </div>
             </div>
+
+            <!-- Floating Yellow Star Doodle -->
+            <svg class="w-9 h-9 text-amber-400 absolute -top-5 -right-3 rotate-12 doodle-float-slow" viewBox="0 0 36 36" fill="currentColor">
+              <path d="M18 2l4.5 10.5L34 14l-8.5 7.5L28 33l-10-6-10 6 2.5-11.5L2 14l11.5-1.5L18 2z" />
+            </svg>
           </div>
         </div>
       </div>
     </section>
 
-   <!-- SKILLS SECTION -->
-    <section id="skills" class="py-24 px-5 sm:px-8">
-      <div class="max-w-6xl mx-auto">
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 reveal">
-          <div>
-            <p class="font-mono text-xs uppercase tracking-[0.2em] text-cyan-400 mb-2">01 // Tech Stack</p>
-            <h2 class="font-display text-3xl sm:text-4xl font-bold text-white">Skills &amp; Technologies</h2>
+    <!-- ==================== SPOTLIGHT BANNER (STUDY TRACKER) ==================== -->
+    <section id="spotlight" class="relative rounded-[2rem] bg-card border border-white/[0.08] p-6 sm:p-9 shadow-2xl reveal overflow-hidden">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <!-- Left Text -->
+        <div class="lg:col-span-5 space-y-4">
+          <div class="inline-flex items-center gap-2 font-marker text-2xl sm:text-3xl text-white">
+            <span class="text-purplePop">&#9733;</span>
+            <span>STUDY TRACKER</span>
           </div>
-
-          <!-- Interactive Filter Pills -->
-          <div class="flex flex-wrap gap-2" role="tablist" aria-label="Filter skills">
-            <button type="button" data-filter="all" class="skill-filter active px-3.5 py-1.5 rounded-xl font-mono text-xs border transition-all">All</button>
-            <button type="button" data-filter="languages" class="skill-filter px-3.5 py-1.5 rounded-xl font-mono text-xs border transition-all">Languages</button>
-            <button type="button" data-filter="web" class="skill-filter px-3.5 py-1.5 rounded-xl font-mono text-xs border transition-all">Web Dev</button>
-            <button type="button" data-filter="systems" class="skill-filter px-3.5 py-1.5 rounded-xl font-mono text-xs border transition-all">Systems &amp; Net</button>
-            <button type="button" data-filter="core" class="skill-filter px-3.5 py-1.5 rounded-xl font-mono text-xs border transition-all">Core CS</button>
+          <p class="text-white/75 text-sm sm:text-base leading-relaxed">
+            A responsive single-page web app built for <span class="text-white font-semibold">Semester 3 Final Exam</span> preparation (expandable to future semesters &amp; midterms). Students register privately to track topic completion in <span class="text-skyPop font-semibold">Cloud Firestore</span>, view live exam countdowns, past-paper topic frequency charts, course notes, and past-paper questions.
+          </p>
+          <div class="flex flex-wrap gap-2 pt-1">
+            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 font-mono text-[11px] text-limePop">Cloud Firestore</span>
+            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 font-mono text-[11px] text-skyPop">Auth &amp; Private Sync</span>
+            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 font-mono text-[11px] text-orangePop">Frequency Charts</span>
           </div>
-        </div>
-
-        <!-- Skills Grid -->
-        <div id="skills-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div data-category="languages" class="skill-card spotlight-card tilt-card reveal p-5 rounded-2xl bg-surface/80 border border-white/10 hover:border-cyan-400/40 transition-all duration-300">
-            <div class="flex items-center justify-between mb-3">
-              <span class="w-10 h-10 rounded-xl bg-cyan-500/15 border border-cyan-400/30 flex items-center justify-center font-mono text-sm font-bold text-cyan-300">C++</span>
-              <span class="font-mono text-[11px] text-slate-400">Language</span>
-            </div>
-            <h3 class="font-display font-semibold text-white text-lg">C++</h3>
-            <p class="text-sm text-slate-400 mt-1">Modern C++, STL, performance-focused problem solving and systems code.</p>
-          </div>
-
-          <div data-category="core" class="skill-card spotlight-card tilt-card reveal reveal-delay-1 p-5 rounded-2xl bg-surface/80 border border-white/10 hover:border-violet-400/40 transition-all duration-300">
-            <div class="flex items-center justify-between mb-3">
-              <span class="w-10 h-10 rounded-xl bg-violet-500/15 border border-violet-400/30 flex items-center justify-center font-mono text-sm font-bold text-violet-300">OOP</span>
-              <span class="font-mono text-[11px] text-slate-400">Paradigm</span>
-            </div>
-            <h3 class="font-display font-semibold text-white text-lg">Object-Oriented Programming</h3>
-            <p class="text-sm text-slate-400 mt-1">Modular architecture, encapsulation, polymorphism, and clean design.</p>
-          </div>
-
-          <div data-category="languages" class="skill-card spotlight-card tilt-card reveal reveal-delay-2 p-5 rounded-2xl bg-surface/80 border border-white/10 hover:border-emerald-400/40 transition-all duration-300">
-            <div class="flex items-center justify-between mb-3">
-              <span class="w-10 h-10 rounded-xl bg-emerald-500/15 border border-emerald-400/30 flex items-center justify-center font-mono text-sm font-bold text-emerald-300">Py</span>
-              <span class="font-mono text-[11px] text-slate-400">Language</span>
-            </div>
-            <h3 class="font-display font-semibold text-white text-lg">Python</h3>
-            <p class="text-sm text-slate-400 mt-1">Scripting, automation, concurrent networking tools, and security labs.</p>
-          </div>
-
-          <div data-category="systems" class="skill-card spotlight-card tilt-card reveal reveal-delay-3 p-5 rounded-2xl bg-surface/80 border border-white/10 hover:border-fuchsia-400/40 transition-all duration-300">
-            <div class="flex items-center justify-between mb-3">
-              <span class="w-10 h-10 rounded-xl bg-fuchsia-500/15 border border-fuchsia-400/30 flex items-center justify-center font-mono text-sm font-bold text-fuchsia-300">&gt;_</span>
-              <span class="font-mono text-[11px] text-slate-400">OS / CLI</span>
-            </div>
-            <h3 class="font-display font-semibold text-white text-lg">Linux</h3>
-            <p class="text-sm text-slate-400 mt-1">Shell workflows, POSIX APIs, process management, and cybersecurity tooling.</p>
-          </div>
-
-          <div data-category="web" class="skill-card spotlight-card tilt-card reveal p-5 rounded-2xl bg-surface/80 border border-white/10 hover:border-orange-400/40 transition-all duration-300">
-            <div class="flex items-center justify-between mb-3">
-              <span class="w-10 h-10 rounded-xl bg-orange-500/15 border border-orange-400/30 flex items-center justify-center font-mono text-sm font-bold text-orange-300">&lt;/&gt;</span>
-              <span class="font-mono text-[11px] text-slate-400">Frontend</span>
-            </div>
-            <h3 class="font-display font-semibold text-white text-lg">HTML</h3>
-            <p class="text-sm text-slate-400 mt-1">Semantic markup, accessible page structure, and modern web layouts.</p>
-          </div>
-
-          <div data-category="web" class="skill-card spotlight-card tilt-card reveal reveal-delay-1 p-5 rounded-2xl bg-surface/80 border border-white/10 hover:border-sky-400/40 transition-all duration-300">
-            <div class="flex items-center justify-between mb-3">
-              <span class="w-10 h-10 rounded-xl bg-sky-500/15 border border-sky-400/30 flex items-center justify-center font-mono text-sm font-bold text-sky-300">CSS</span>
-              <span class="font-mono text-[11px] text-slate-400">Styling</span>
-            </div>
-            <h3 class="font-display font-semibold text-white text-lg">CSS</h3>
-            <p class="text-sm text-slate-400 mt-1">Responsive design, Flexbox, Grid, Tailwind CSS, and smooth UI animations.</p>
-          </div>
-
-          <div data-category="web" class="skill-card spotlight-card tilt-card reveal reveal-delay-2 p-5 rounded-2xl bg-surface/80 border border-white/10 hover:border-yellow-400/40 transition-all duration-300">
-            <div class="flex items-center justify-between mb-3">
-              <span class="w-10 h-10 rounded-xl bg-yellow-500/15 border border-yellow-400/30 flex items-center justify-center font-mono text-sm font-bold text-yellow-300">JS</span>
-              <span class="font-mono text-[11px] text-slate-400">Language</span>
-            </div>
-            <h3 class="font-display font-semibold text-white text-lg">JavaScript</h3>
-            <p class="text-sm text-slate-400 mt-1">Interactive DOM logic, async APIs, dynamic web apps, and client-side scripting.</p>
-          </div>
-
-          <div data-category="web" class="skill-card spotlight-card tilt-card reveal reveal-delay-3 p-5 rounded-2xl bg-surface/80 border border-white/10 hover:border-cyan-400/40 transition-all duration-300">
-            <div class="flex items-center justify-between mb-3">
-              <span class="w-10 h-10 rounded-xl bg-cyan-500/15 border border-cyan-400/30 flex items-center justify-center font-mono text-sm font-bold text-cyan-300">Re</span>
-              <span class="font-mono text-[11px] text-slate-400">Library</span>
-            </div>
-            <h3 class="font-display font-semibold text-white text-lg">React</h3>
-            <p class="text-sm text-slate-400 mt-1">Component-based UI architecture, hooks, state management, and single-page apps.</p>
-          </div>
-
-          <div data-category="web" class="skill-card spotlight-card tilt-card reveal p-5 rounded-2xl bg-surface/80 border border-white/10 hover:border-amber-400/40 transition-all duration-300">
-            <div class="flex items-center justify-between mb-3">
-              <span class="w-10 h-10 rounded-xl bg-amber-500/15 border border-amber-400/30 flex items-center justify-center font-mono text-sm font-bold text-amber-300">FB</span>
-              <span class="font-mono text-[11px] text-slate-400">BaaS / Cloud</span>
-            </div>
-            <h3 class="font-display font-semibold text-white text-lg">Firebase</h3>
-            <p class="text-sm text-slate-400 mt-1">Authentication, Firestore real-time databases, and fast web app hosting.</p>
-          </div>
-
-          <div data-category="languages" class="skill-card spotlight-card tilt-card reveal reveal-delay-1 p-5 rounded-2xl bg-surface/80 border border-white/10 hover:border-amber-400/40 transition-all duration-300">
-            <div class="flex items-center justify-between mb-3">
-              <span class="w-10 h-10 rounded-xl bg-amber-500/15 border border-amber-400/30 flex items-center justify-center font-mono text-sm font-bold text-amber-300">SQL</span>
-              <span class="font-mono text-[11px] text-slate-400">Database</span>
-            </div>
-            <h3 class="font-display font-semibold text-white text-lg">SQL</h3>
-            <p class="text-sm text-slate-400 mt-1">Relational data modeling, structured queries, and persistent storage.</p>
-          </div>
-
-          <div data-category="systems" class="skill-card spotlight-card tilt-card reveal reveal-delay-2 p-5 rounded-2xl bg-surface/80 border border-white/10 hover:border-cyan-400/40 transition-all duration-300">
-            <div class="flex items-center justify-between mb-3">
-              <span class="w-10 h-10 rounded-xl bg-cyan-500/15 border border-cyan-400/30 flex items-center justify-center font-mono text-sm font-bold text-cyan-300">TCP</span>
-              <span class="font-mono text-[11px] text-slate-400">Protocols</span>
-            </div>
-            <h3 class="font-display font-semibold text-white text-lg">Networking</h3>
-            <p class="text-sm text-slate-400 mt-1">TCP/IP sockets, client-server protocols, reconnaissance, and packet flow.</p>
-          </div>
-
-          <div data-category="core" class="skill-card spotlight-card tilt-card reveal reveal-delay-3 p-5 rounded-2xl bg-surface/80 border border-white/10 hover:border-violet-400/40 transition-all duration-300">
-            <div class="flex items-center justify-between mb-3">
-              <span class="w-10 h-10 rounded-xl bg-violet-500/15 border border-violet-400/30 flex items-center justify-center font-mono text-sm font-bold text-violet-300">O(n)</span>
-              <span class="font-mono text-[11px] text-slate-400">Algorithms</span>
-            </div>
-            <h3 class="font-display font-semibold text-white text-lg">Competitive Programming</h3>
-            <p class="text-sm text-slate-400 mt-1">Data structures, greedy algorithms, binary search, and contest problem solving.</p>
-          </div>
-
-          <div data-category="systems" class="skill-card spotlight-card tilt-card reveal p-5 rounded-2xl bg-surface/80 border border-white/10 hover:border-fuchsia-400/40 transition-all duration-300">
-            <div class="flex items-center justify-between mb-3">
-              <span class="w-10 h-10 rounded-xl bg-fuchsia-500/15 border border-fuchsia-400/30 flex items-center justify-center font-mono text-sm font-bold text-fuchsia-300">Git</span>
-              <span class="font-mono text-[11px] text-slate-400">Workflow</span>
-            </div>
-            <h3 class="font-display font-semibold text-white text-lg">Git &amp; GitHub</h3>
-            <p class="text-sm text-slate-400 mt-1">Version control, branching, collaborative workflows, and open-source publishing.</p>
+          <div class="pt-2">
+            <a href="https://samir-ali88.github.io/Study-Tracker/" target="_blank" rel="noopener noreferrer"
+              class="inline-flex items-center gap-2.5 text-limePop hover:text-white font-bold text-sm transition-colors group">
+              <span>Launch Live App</span>
+              <span class="w-7 h-7 rounded-full border-2 border-limePop group-hover:bg-limePop group-hover:text-ink flex items-center justify-center transition-all">
+                &#9654;
+              </span>
+            </a>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- PROJECTS SECTION -->
-    <section id="projects" class="py-24 px-5 sm:px-8">
-      <div class="max-w-6xl mx-auto">
-        <div class="mb-12 reveal">
-          <p class="font-mono text-xs uppercase tracking-[0.2em] text-fuchsia-400 mb-2">02 // Featured Work</p>
-          <h2 class="font-display text-3xl sm:text-4xl font-bold text-white">Projects</h2>
-          <p class="text-slate-400 mt-2 max-w-xl">Systems, networking, and security-oriented applications built from the ground up.</p>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-
-          <!-- Project Card 1 -->
-          <article class="spotlight-card tilt-card reveal group relative flex flex-col justify-between p-7 rounded-3xl bg-surface/85 border border-white/10 hover:border-cyan-400/50 shadow-xl shadow-black/40 transition-all duration-500">
-            <div>
-              <div class="flex items-center justify-between gap-4 mb-5">
-                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-400/25 font-mono text-xs text-cyan-300">
-                  <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
-                  Systems &amp; GUI
-                </span>
-                <a href="https://github.com/Samir-Ali88/gtk-c-chat" target="_blank" rel="noopener noreferrer"
-                  aria-label="Open GTK Chat System on GitHub"
-                  class="p-2 rounded-xl bg-white/5 hover:bg-cyan-500/20 text-slate-300 hover:text-cyan-300 border border-white/10 transition-colors">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
-                </a>
-              </div>
-
-              <h3 class="font-display text-2xl font-bold text-white group-hover:text-cyan-300 transition-colors">
-                <a href="https://github.com/Samir-Ali88/gtk-c-chat" target="_blank" rel="noopener noreferrer">
-                  GTK Chat System Using C/C++
-                </a>
-              </h3>
-
-              <p class="text-slate-300/90 text-sm sm:text-base leading-relaxed mt-4">
-                GTK C Chat is a lightweight real-time chat application built with C and GTK. It follows a
-                client-server architecture where multiple clients communicate through a centralized server using TCP
-                sockets. It features a GTK-based graphical interface, multithreading for concurrent connections,
-                and a dedicated database module for persistent storage of chat history and user data.
-              </p>
-
-              <div class="flex flex-wrap gap-2 mt-6">
-                <span class="tech-badge">C</span>
-                <span class="tech-badge">GTK 3/4</span>
-                <span class="tech-badge">TCP Sockets</span>
-                <span class="tech-badge">Multithreading</span>
-                <span class="tech-badge">File Handling</span>
-                <span class="tech-badge">Linux/Unix APIs</span>
-              </div>
-            </div>
-
-            <div class="mt-7 pt-5 border-t border-white/10 flex items-center justify-between">
-              <a href="https://github.com/Samir-Ali88/gtk-c-chat" target="_blank" rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 font-mono text-xs font-semibold text-cyan-300 hover:text-cyan-200 transition-colors">
-                <span>View Source on GitHub</span>
-                <span class="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
-              </a>
-              <span class="font-mono text-[11px] text-slate-500">Samir-Ali88/gtk-c-chat</span>
-            </div>
-          </article>
-
-          <!-- Project Card 2 -->
-          <article class="spotlight-card tilt-card reveal reveal-delay-2 group relative flex flex-col justify-between p-7 rounded-3xl bg-surface/85 border border-white/10 hover:border-fuchsia-400/50 shadow-xl shadow-black/40 transition-all duration-500">
-            <div>
-              <div class="flex items-center justify-between gap-4 mb-5">
-                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-fuchsia-500/10 border border-fuchsia-400/25 font-mono text-xs text-fuchsia-300">
-                  <span class="w-1.5 h-1.5 rounded-full bg-fuchsia-400"></span>
-                  Networking &amp; Security
-                </span>
-                <a href="https://github.com/Samir-Ali88/Networking-Project/blob/main/project/multithreaded_port_scanner.py" target="_blank" rel="noopener noreferrer"
-                  aria-label="Open Multi-Threaded Port Scanner on GitHub"
-                  class="p-2 rounded-xl bg-white/5 hover:bg-fuchsia-500/20 text-slate-300 hover:text-fuchsia-300 border border-white/10 transition-colors">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
-                </a>
-              </div>
-
-              <h3 class="font-display text-2xl font-bold text-white group-hover:text-fuchsia-300 transition-colors">
-                <a href="https://github.com/Samir-Ali88/Networking-Project/blob/main/project/multithreaded_port_scanner.py" target="_blank" rel="noopener noreferrer">
-                  Multi-Threaded Port Scanner
-                </a>
-              </h3>
-
-              <p class="text-slate-300/90 text-sm sm:text-base leading-relaxed mt-4">
-                Built a Python TCP port scanner using 20 concurrent threads, thread-safe task queues, socket timeouts,
-                and basic banner grabbing to efficiently identify open ports and services. Implemented concurrent task
-                distribution and synchronization to boost scanning efficiency while keeping output clean and reliable.
-              </p>
-
-              <div class="flex flex-wrap gap-2 mt-6">
-                <span class="tech-badge">Python</span>
-                <span class="tech-badge">TCP/IP</span>
-                <span class="tech-badge">Socket Programming</span>
-                <span class="tech-badge">Multithreading</span>
-                <span class="tech-badge">Reconnaissance</span>
-                <span class="tech-badge">Thread Sync</span>
-              </div>
-            </div>
-
-            <div class="mt-7 pt-5 border-t border-white/10 flex items-center justify-between">
-              <a href="https://github.com/Samir-Ali88/Networking-Project/blob/main/project/multithreaded_port_scanner.py" target="_blank" rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 font-mono text-xs font-semibold text-fuchsia-300 hover:text-fuchsia-200 transition-colors">
-                <span>View Source on GitHub</span>
-                <span class="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
-              </a>
-              <span class="font-mono text-[11px] text-slate-500">Networking-Project</span>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT SECTION -->
-    <section id="contact" class="py-24 px-5 sm:px-8">
-      <div class="max-w-5xl mx-auto">
-        <div class="relative rounded-3xl p-7 sm:p-12 bg-surface/85 border border-white/10 shadow-2xl overflow-hidden reveal">
-          <div class="relative grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-            <!-- Left Info -->
-            <div class="lg:col-span-5 space-y-6">
+        <!-- Right Visual Preview Card (Interactive-style UI mockup) -->
+        <div class="lg:col-span-7">
+          <a href="https://github.com/Samir-Ali88/Study-Tracker" target="_blank" rel="noopener noreferrer"
+            class="group relative block rounded-2xl overflow-hidden border-2 border-white/10 hover:border-limePop/70 bg-gradient-to-br from-[#1d1438] via-[#13182e] to-[#0f172a] p-6 sm:p-8 transition-all duration-300 shadow-xl">
+            <!-- Stylized Mini Dashboard UI -->
+            <div class="flex items-center justify-between mb-6">
               <div>
-                <p class="font-mono text-xs uppercase tracking-[0.2em] text-emerald-400 mb-2">03 // Get In Touch</p>
-                <h2 class="font-display text-3xl sm:text-4xl font-bold text-white">Let's Connect</h2>
-                <p class="text-slate-300/90 mt-3 leading-relaxed">
-                  Have a project idea, want to talk competitive programming, or just want to say hi?
-                  Send me a message or connect with me directly.
-                </p>
+                <p class="font-mono text-[11px] text-skyPop uppercase tracking-wider">Semester 3 &bull; Finals</p>
+                <p class="font-bold text-lg sm:text-xl text-white">Exam Prep Dashboard</p>
               </div>
+              <span class="px-3 py-1 rounded-full bg-limePop text-ink font-mono text-xs font-extrabold">LIVE</span>
+            </div>
 
-              <!-- Direct Email Box with Copy Button -->
-              <div class="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-3">
-                <p class="font-mono text-xs text-slate-400">Direct Email</p>
-                <a href="mailto:samirali.tech88@gmail.com"
-                  class="block font-mono text-sm sm:text-base text-cyan-300 hover:text-cyan-200 break-all transition-colors">
-                  samirali.tech88@gmail.com
-                </a>
-                <button id="copy-email-btn" type="button" data-email="samirali.tech88@gmail.com"
-                  class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white/5 hover:bg-cyan-500/20 border border-white/10 hover:border-cyan-400/40 font-mono text-xs text-slate-200 transition-all">
-                  <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                  </svg>
-                  <span id="copy-email-label">Copy Email</span>
-                </button>
+            <!-- Mockup Stat Bars & Countdown -->
+            <div class="grid grid-cols-3 gap-3 mb-5">
+              <div class="p-3 rounded-xl bg-white/5 border border-white/10">
+                <p class="font-mono text-[10px] text-white/60">Countdown</p>
+                <p class="font-marker text-xl text-limePop mt-0.5">ACTIVE</p>
               </div>
-
-              <!-- Social Links -->
-              <div class="space-y-2.5">
-                <p class="font-mono text-xs text-slate-400">Social Profiles</p>
-                <div class="flex flex-wrap gap-2.5">
-                  <a href="https://www.linkedin.com/in/imam-samir-ali/" target="_blank" rel="noopener noreferrer"
-                    class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white/5 hover:bg-cyan-500/15 border border-white/10 hover:border-cyan-400/40 font-mono text-xs text-slate-200 hover:text-cyan-300 transition-all">
-                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
-                    </svg>
-                    LinkedIn
-                  </a>
-                  <a href="https://www.facebook.com/share/1CMwsWVoQK/" target="_blank" rel="noopener noreferrer"
-                    class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white/5 hover:bg-violet-500/15 border border-white/10 hover:border-violet-400/40 font-mono text-xs text-slate-200 hover:text-violet-300 transition-all">
-                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
-                    </svg>
-                    Facebook
-                  </a>
-                  <a href="https://github.com/Samir-Ali88" target="_blank" rel="noopener noreferrer"
-                    class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white/5 hover:bg-fuchsia-500/15 border border-white/10 hover:border-fuchsia-400/40 font-mono text-xs text-slate-200 hover:text-fuchsia-300 transition-all">
-                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
-                    </svg>
-                    GitHub
-                  </a>
-                </div>
+              <div class="p-3 rounded-xl bg-white/5 border border-white/10">
+                <p class="font-mono text-[10px] text-white/60">Database</p>
+                <p class="font-bold text-sm text-skyPop mt-1">Firestore</p>
+              </div>
+              <div class="p-3 rounded-xl bg-white/5 border border-white/10">
+                <p class="font-mono text-[10px] text-white/60">Analytics</p>
+                <p class="font-bold text-sm text-orangePop mt-1">Past Papers</p>
               </div>
             </div>
 
-            <!-- Right Form -->
-            <form id="contact-form" class="lg:col-span-7 space-y-5" novalidate>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                <div>
-                  <label for="name" class="block font-mono text-xs text-slate-300 mb-2">Name</label>
-                  <input type="text" id="name" name="name" required placeholder="Your name"
-                    class="w-full px-4 py-3 rounded-xl bg-night/90 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 transition-all" />
-                </div>
-                <div>
-                  <label for="email" class="block font-mono text-xs text-slate-300 mb-2">Email</label>
-                  <input type="email" id="email" name="email" required placeholder="you@example.com"
-                    class="w-full px-4 py-3 rounded-xl bg-night/90 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 transition-all" />
-                </div>
-              </div>
+            <!-- Frequency Bars Visual -->
+            <div class="flex items-end gap-2.5 h-20 pt-2 px-2">
+              <div class="flex-1 bg-purplePop/70 rounded-t-lg h-[55%] group-hover:h-[70%] transition-all duration-500"></div>
+              <div class="flex-1 bg-skyPop/80 rounded-t-lg h-[85%] group-hover:h-[95%] transition-all duration-500"></div>
+              <div class="flex-1 bg-limePop/90 rounded-t-lg h-[65%] group-hover:h-[80%] transition-all duration-500"></div>
+              <div class="flex-1 bg-orangePop/80 rounded-t-lg h-[95%] group-hover:h-[100%] transition-all duration-500"></div>
+              <div class="flex-1 bg-purplePop/70 rounded-t-lg h-[50%] group-hover:h-[65%] transition-all duration-500"></div>
+              <div class="flex-1 bg-skyPop/80 rounded-t-lg h-[75%] group-hover:h-[88%] transition-all duration-500"></div>
+            </div>
 
-              <div>
-                <label for="message" class="block font-mono text-xs text-slate-300 mb-2">Message</label>
-                <textarea id="message" name="message" rows="5" required placeholder="Write your message here..."
-                  class="w-full px-4 py-3 rounded-xl bg-night/90 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 transition-all resize-y"></textarea>
-              </div>
+            <!-- Center Floating Play/Open Button (matching reference Showreel button) -->
+            <div class="absolute inset-0 flex items-center justify-center bg-ink/20 group-hover:bg-ink/10 transition-colors">
+              <span class="w-16 h-16 rounded-full bg-limePop text-ink flex items-center justify-center shadow-2xl shadow-limePop/40 group-hover:scale-110 transition-transform duration-300">
+                <svg class="w-6 h-6 translate-x-0.5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
 
-              <button type="submit"
-                class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm text-white bg-gradient-to-r from-cyan-500 via-violet-500 to-fuchsia-500 shadow-lg shadow-violet-500/20 hover:shadow-cyan-500/35 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300">
-                <span>Send Message</span>
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                </svg>
-              </button>
-            </form>
+    <!-- ==================== FEATURED PROJECTS ==================== -->
+    <section id="projects" class="rounded-[2rem] bg-card border border-white/[0.08] p-6 sm:p-9 shadow-2xl reveal">
+      <div class="flex flex-wrap items-center justify-between gap-4 mb-7">
+        <div class="flex items-center gap-3">
+          <h2 class="font-marker text-2xl sm:text-3xl text-white">FEATURED PROJECTS</h2>
+          <!-- Purple Squiggle -->
+          <svg class="w-10 h-4 text-purplePop hidden sm:block" viewBox="0 0 48 16" fill="none">
+            <path d="M2 10C8 2 14 2 20 10C26 18 32 18 38 10C41 6 44 6 46 8" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" />
+          </svg>
+        </div>
+        <a href="https://github.com/Samir-Ali88" target="_blank" rel="noopener noreferrer"
+          class="text-xs sm:text-sm font-bold text-limePop hover:text-white transition-colors">
+          View All Projects &rarr;
+        </a>
+      </div>
+
+      <!-- 3-Column Vibrant Thumbnail Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- Project 1: Study Tracker -->
+        <a href="https://samir-ali88.github.io/Study-Tracker" target="_blank" rel="noopener noreferrer"
+          class="project-card group flex flex-col rounded-2xl overflow-hidden bg-ink border border-white/10 hover:border-limePop transition-all duration-300">
+          <div class="h-44 bg-gradient-to-br from-limePop via-[#a3e635] to-emerald-400 p-5 flex flex-col justify-between relative overflow-hidden">
+            <span class="self-start px-3 py-1 rounded-full bg-ink text-limePop font-mono text-[11px] font-bold">WEB APP</span>
+            <div class="font-marker text-3xl text-ink leading-none">STUDY<br />TRACKER</div>
+            <svg class="w-16 h-16 text-ink/15 absolute -right-2 -bottom-2" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z" />
+            </svg>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2">
+                <h3 class="font-bold text-base text-white group-hover:text-limePop transition-colors">Study Tracker SPA</h3>
+                <span class="text-white/60 group-hover:text-limePop group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all">&#8599;</span>
+              </div>
+              <p class="text-xs text-white/65 mt-2 leading-relaxed">
+                Private Firestore topic tracker, exam countdown, past-paper frequency charts &amp; notes for Semester 3 Finals.
+              </p>
+            </div>
+            <p class="font-mono text-[11px] text-skyPop mt-4">HTML &bull; CSS &bull; JS &bull; Firebase</p>
+          </div>
+        </a>
+
+        <!-- Project 2: GTK Chat System -->
+        <a href="https://github.com/Samir-Ali88/gtk-c-chat" target="_blank" rel="noopener noreferrer"
+          class="project-card group flex flex-col rounded-2xl overflow-hidden bg-ink border border-white/10 hover:border-orangePop transition-all duration-300">
+          <div class="h-44 bg-gradient-to-br from-orangePop via-[#fb923c] to-amber-400 p-5 flex flex-col justify-between relative overflow-hidden">
+            <span class="self-start px-3 py-1 rounded-full bg-ink text-orangePop font-mono text-[11px] font-bold">SYSTEMS</span>
+            <div class="font-marker text-3xl text-ink leading-none">GTK C<br />CHAT</div>
+            <svg class="w-16 h-16 text-ink/15 absolute -right-2 -bottom-2" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z" />
+            </svg>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2">
+                <h3 class="font-bold text-base text-white group-hover:text-orangePop transition-colors">GTK Chat System</h3>
+                <span class="text-white/60 group-hover:text-orangePop group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all">&#8599;</span>
+              </div>
+              <p class="text-xs text-white/65 mt-2 leading-relaxed">
+                Real-time client-server chat app built in C with GTK 3/4, POSIX TCP sockets, multithreading, and file persistence.
+              </p>
+            </div>
+            <p class="font-mono text-[11px] text-orangePop mt-4">C &bull; GTK &bull; TCP Sockets &bull; Linux</p>
+          </div>
+        </a>
+
+        <!-- Project 3: Multi-Threaded Port Scanner -->
+        <a href="https://github.com/Samir-Ali88/Networking-Project/blob/main/project/multithreaded_port_scanner.py" target="_blank" rel="noopener noreferrer"
+          class="project-card group flex flex-col rounded-2xl overflow-hidden bg-ink border border-white/10 hover:border-skyPop transition-all duration-300">
+          <div class="h-44 bg-gradient-to-br from-purplePop via-indigo-500 to-skyPop p-5 flex flex-col justify-between relative overflow-hidden">
+            <span class="self-start px-3 py-1 rounded-full bg-ink text-skyPop font-mono text-[11px] font-bold">SECURITY</span>
+            <div class="font-marker text-3xl text-white leading-none">PORT<br />SCANNER</div>
+            <svg class="w-16 h-16 text-white/15 absolute -right-2 -bottom-2" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" />
+            </svg>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2">
+                <h3 class="font-bold text-base text-white group-hover:text-skyPop transition-colors">Multi-Threaded Port Scanner</h3>
+                <span class="text-white/60 group-hover:text-skyPop group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all">&#8599;</span>
+              </div>
+              <p class="text-xs text-white/65 mt-2 leading-relaxed">
+                Python TCP port scanner using 20 concurrent threads, thread-safe queues, socket timeouts, and banner grabbing.
+              </p>
+            </div>
+            <p class="font-mono text-[11px] text-purplePop mt-4">Python &bull; TCP/IP &bull; Multithreading</p>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- ==================== SKILLS SECTION (APP-BADGE STYLE) ==================== -->
+    <section id="skills" class="rounded-[2rem] bg-card border border-white/[0.08] p-6 sm:p-9 shadow-2xl reveal">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-7">
+        <h2 class="font-marker text-2xl sm:text-3xl text-white">SKILLS</h2>
+
+        <!-- Filter Pills -->
+        <div class="flex flex-wrap gap-2" role="tablist" aria-label="Filter skills">
+          <button type="button" data-filter="all" class="skill-filter active px-4 py-1.5 rounded-full font-mono text-xs font-bold border transition-all">All</button>
+          <button type="button" data-filter="languages" class="skill-filter px-4 py-1.5 rounded-full font-mono text-xs font-bold border transition-all">Languages</button>
+          <button type="button" data-filter="web" class="skill-filter px-4 py-1.5 rounded-full font-mono text-xs font-bold border transition-all">Web Dev</button>
+          <button type="button" data-filter="systems" class="skill-filter px-4 py-1.5 rounded-full font-mono text-xs font-bold border transition-all">Systems &amp; Net</button>
+          <button type="button" data-filter="core" class="skill-filter px-4 py-1.5 rounded-full font-mono text-xs font-bold border transition-all">Core CS</button>
+        </div>
+      </div>
+
+      <!-- Compact Vibrant Icon Tiles (inspired by Ae / An / Ps / Pr row) -->
+      <div id="skills-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+        <div data-category="languages" class="skill-card flex flex-col items-center text-center p-4 rounded-2xl bg-ink border border-white/10 hover:border-skyPop hover:-translate-y-1 transition-all duration-200">
+          <span class="w-12 h-12 rounded-xl bg-skyPop/15 border-2 border-skyPop text-skyPop font-mono font-extrabold text-base flex items-center justify-center mb-2.5">C++</span>
+          <span class="text-sm font-bold text-white">C++</span>
+        </div>
+
+        <div data-category="languages" class="skill-card flex flex-col items-center text-center p-4 rounded-2xl bg-ink border border-white/10 hover:border-limePop hover:-translate-y-1 transition-all duration-200">
+          <span class="w-12 h-12 rounded-xl bg-limePop/15 border-2 border-limePop text-limePop font-mono font-extrabold text-base flex items-center justify-center mb-2.5">Py</span>
+          <span class="text-sm font-bold text-white">Python</span>
+        </div>
+
+        <div data-category="web" class="skill-card flex flex-col items-center text-center p-4 rounded-2xl bg-ink border border-white/10 hover:border-orangePop hover:-translate-y-1 transition-all duration-200">
+          <span class="w-12 h-12 rounded-xl bg-orangePop/15 border-2 border-orangePop text-orangePop font-mono font-extrabold text-base flex items-center justify-center mb-2.5">&lt;/&gt;</span>
+          <span class="text-sm font-bold text-white">HTML</span>
+        </div>
+
+        <div data-category="web" class="skill-card flex flex-col items-center text-center p-4 rounded-2xl bg-ink border border-white/10 hover:border-skyPop hover:-translate-y-1 transition-all duration-200">
+          <span class="w-12 h-12 rounded-xl bg-skyPop/15 border-2 border-skyPop text-skyPop font-mono font-extrabold text-base flex items-center justify-center mb-2.5">CSS</span>
+          <span class="text-sm font-bold text-white">CSS</span>
+        </div>
+
+        <div data-category="web" class="skill-card flex flex-col items-center text-center p-4 rounded-2xl bg-ink border border-white/10 hover:border-amber-400 hover:-translate-y-1 transition-all duration-200">
+          <span class="w-12 h-12 rounded-xl bg-amber-400/15 border-2 border-amber-400 text-amber-300 font-mono font-extrabold text-base flex items-center justify-center mb-2.5">JS</span>
+          <span class="text-sm font-bold text-white">JavaScript</span>
+        </div>
+
+        <div data-category="web" class="skill-card flex flex-col items-center text-center p-4 rounded-2xl bg-ink border border-white/10 hover:border-cyan-400 hover:-translate-y-1 transition-all duration-200">
+          <span class="w-12 h-12 rounded-xl bg-cyan-400/15 border-2 border-cyan-400 text-cyan-300 font-mono font-extrabold text-base flex items-center justify-center mb-2.5">Re</span>
+          <span class="text-sm font-bold text-white">React</span>
+        </div>
+
+        <div data-category="web" class="skill-card flex flex-col items-center text-center p-4 rounded-2xl bg-ink border border-white/10 hover:border-orangePop hover:-translate-y-1 transition-all duration-200">
+          <span class="w-12 h-12 rounded-xl bg-orangePop/15 border-2 border-orangePop text-orangePop font-mono font-extrabold text-base flex items-center justify-center mb-2.5">FB</span>
+          <span class="text-sm font-bold text-white">Firebase</span>
+        </div>
+
+        <div data-category="systems" class="skill-card flex flex-col items-center text-center p-4 rounded-2xl bg-ink border border-white/10 hover:border-purplePop hover:-translate-y-1 transition-all duration-200">
+          <span class="w-12 h-12 rounded-xl bg-purplePop/20 border-2 border-purplePop text-purple-300 font-mono font-extrabold text-base flex items-center justify-center mb-2.5">&gt;_</span>
+          <span class="text-sm font-bold text-white">Linux</span>
+        </div>
+
+        <div data-category="languages" class="skill-card flex flex-col items-center text-center p-4 rounded-2xl bg-ink border border-white/10 hover:border-emerald-400 hover:-translate-y-1 transition-all duration-200">
+          <span class="w-12 h-12 rounded-xl bg-emerald-400/15 border-2 border-emerald-400 text-emerald-300 font-mono font-extrabold text-base flex items-center justify-center mb-2.5">SQL</span>
+          <span class="text-sm font-bold text-white">SQL</span>
+        </div>
+
+        <div data-category="systems" class="skill-card flex flex-col items-center text-center p-4 rounded-2xl bg-ink border border-white/10 hover:border-skyPop hover:-translate-y-1 transition-all duration-200">
+          <span class="w-12 h-12 rounded-xl bg-skyPop/15 border-2 border-skyPop text-skyPop font-mono font-extrabold text-base flex items-center justify-center mb-2.5">TCP</span>
+          <span class="text-sm font-bold text-white">Networking</span>
+        </div>
+
+        <div data-category="core" class="skill-card flex flex-col items-center text-center p-4 rounded-2xl bg-ink border border-white/10 hover:border-limePop hover:-translate-y-1 transition-all duration-200">
+          <span class="w-12 h-12 rounded-xl bg-limePop/15 border-2 border-limePop text-limePop font-mono font-extrabold text-base flex items-center justify-center mb-2.5">OOP</span>
+          <span class="text-sm font-bold text-white">OOP</span>
+        </div>
+
+        <div data-category="core" class="skill-card flex flex-col items-center text-center p-4 rounded-2xl bg-ink border border-white/10 hover:border-purplePop hover:-translate-y-1 transition-all duration-200">
+          <span class="w-12 h-12 rounded-xl bg-purplePop/20 border-2 border-purplePop text-purple-300 font-mono font-extrabold text-sm flex items-center justify-center mb-2.5">O(n)</span>
+          <span class="text-sm font-bold text-white">Competitive Prog.</span>
+        </div>
+
+        <div data-category="systems" class="skill-card flex flex-col items-center text-center p-4 rounded-2xl bg-ink border border-white/10 hover:border-orangePop hover:-translate-y-1 transition-all duration-200">
+          <span class="w-12 h-12 rounded-xl bg-orangePop/15 border-2 border-orangePop text-orangePop font-mono font-extrabold text-base flex items-center justify-center mb-2.5">Git</span>
+          <span class="text-sm font-bold text-white">Git &amp; GitHub</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ABOUT ME CARD (MATCHING REFERENCE) ==================== -->
+    <section id="about" class="rounded-[2rem] bg-card border border-white/[0.08] p-6 sm:p-9 shadow-2xl reveal">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <!-- Left Acid-Lime Comic Poster Box -->
+        <div class="lg:col-span-5">
+          <div class="relative rounded-2xl bg-limePop text-ink p-6 overflow-hidden shadow-xl">
+            <div class="flex items-start justify-between">
+              <div class="font-marker text-2xl sm:text-3xl leading-tight -rotate-2">
+                FOCUS<br />DISCIPLINE<br />CONSISTENCY
+              </div>
+              <svg class="w-10 h-10 text-ink rotate-12" viewBox="0 0 48 48" fill="none">
+                <path d="M8 34L6 16L17 24L24 10L31 24L42 16L40 34H8Z" stroke="currentColor" stroke-width="3.2" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <div class="mt-6 flex items-center justify-between pt-4 border-t-2 border-ink/20 font-mono text-xs font-extrabold">
+              <span>IIUC &bull; BSc CSE</span>
+              <span>SOLO</span>
+            </div>
           </div>
         </div>
+
+        <!-- Right Bio -->
+        <div class="lg:col-span-7 space-y-4">
+          <h2 class="font-marker text-2xl sm:text-3xl text-white">ABOUT ME</h2>
+          <p class="text-white/75 text-sm sm:text-base leading-relaxed">
+            I'm <span class="text-white font-semibold">Samir Ali</span>, a Computer Science &amp; Engineering student at
+            <span class="text-limePop font-semibold">IIUC</span> building strong foundations in systems programming, web development, and networking.
+            Outside of coursework, I train daily on <span class="text-white font-semibold">competitive programming</span> problems and follow a
+            <span class="text-skyPop font-semibold">Linux &amp; Python</span> path toward <span class="text-white font-semibold">cybersecurity</span>.
+          </p>
+          <a href="#contact" class="inline-flex items-center gap-2 text-limePop hover:text-white font-bold text-sm transition-colors group">
+            <span>Get In Touch</span>
+            <span class="w-6 h-6 rounded-full border border-limePop group-hover:bg-limePop group-hover:text-ink flex items-center justify-center transition-all">&rarr;</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CONTACT & FOOTER ("LET'S MAKE SOMETHING DOPE!") ==================== -->
+    <section id="contact" class="rounded-[2rem] bg-card border border-white/[0.08] p-6 sm:p-10 shadow-2xl reveal">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <!-- Left CTA + Direct Info -->
+        <div class="lg:col-span-5 space-y-6">
+          <h2 class="font-marker text-3xl sm:text-4xl text-white leading-tight">
+            LET'S BUILD<br />
+            SOMETHING
+            <span class="inline-block px-3 py-0.5 rounded-full border-2 border-purplePop text-limePop -rotate-2">DOPE!</span>
+          </h2>
+
+          <div class="space-y-3 text-sm text-white/80">
+            <div class="flex items-center gap-3">
+              <span class="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-limePop">&#9993;</span>
+              <a href="mailto:samirali.tech88@gmail.com" class="font-mono hover:text-limePop transition-colors break-all">samirali.tech88@gmail.com</a>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-skyPop">&#9906;</span>
+              <span>Chattogram, Bangladesh</span>
+            </div>
+          </div>
+
+          <button id="copy-email-btn" type="button" data-email="samirali.tech88@gmail.com"
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 hover:bg-limePop hover:text-ink border border-white/15 font-mono text-xs font-bold transition-all">
+            <span id="copy-email-label">Copy Email Address</span>
+          </button>
+
+          <!-- Circular Social Icons -->
+          <div class="flex items-center gap-3 pt-1">
+            <a href="https://github.com/Samir-Ali88" target="_blank" rel="noopener noreferrer" aria-label="GitHub"
+              class="w-10 h-10 rounded-full bg-ink border border-white/15 hover:border-limePop hover:text-limePop flex items-center justify-center transition-all">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" /></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/imam-samir-ali/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
+              class="w-10 h-10 rounded-full bg-ink border border-white/15 hover:border-skyPop hover:text-skyPop flex items-center justify-center transition-all">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" /></svg>
+            </a>
+            <a href="https://www.facebook.com/share/1CMwsWVoQK/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"
+              class="w-10 h-10 rounded-full bg-ink border border-white/15 hover:border-purplePop hover:text-purple-400 flex items-center justify-center transition-all">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" /></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Contact Form -->
+        <form id="contact-form" class="lg:col-span-7 space-y-4" novalidate>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <input type="text" id="name" name="name" required placeholder="Your Name"
+              class="w-full px-4 py-3.5 rounded-2xl bg-ink border border-white/10 text-white placeholder-white/40 focus:outline-none focus:border-limePop transition-colors" />
+            <input type="email" id="email" name="email" required placeholder="Your Email"
+              class="w-full px-4 py-3.5 rounded-2xl bg-ink border border-white/10 text-white placeholder-white/40 focus:outline-none focus:border-limePop transition-colors" />
+          </div>
+          <textarea id="message" name="message" rows="4" required placeholder="Tell me about your project or say hi..."
+            class="w-full px-4 py-3.5 rounded-2xl bg-ink border border-white/10 text-white placeholder-white/40 focus:outline-none focus:border-limePop transition-colors resize-y"></textarea>
+          <button type="submit"
+            class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-limePop text-ink font-extrabold text-sm hover:scale-105 active:scale-95 transition-transform duration-200">
+            <span>Send Message</span>
+            <span>&#8599;</span>
+          </button>
+        </form>
       </div>
     </section>
 
   </main>
 
-  <!-- FOOTER -->
-  <footer class="relative z-10 border-t border-white/10 py-10 px-5 sm:px-8">
-    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-400">
-      <div class="flex items-center gap-2 font-display font-bold text-white">
-        <span>SOLO</span>
-        <span class="text-slate-600">|</span>
-        <span class="font-sans font-normal text-slate-400">&copy; 2026 All rights reserved by Samir.</span>
-      </div>
-      <div class="flex flex-wrap items-center justify-center gap-5 font-mono text-xs">
-        <a href="https://github.com/Samir-Ali88" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-300 transition-colors">GitHub</a>
-        <a href="https://www.linkedin.com/in/imam-samir-ali/" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-300 transition-colors">LinkedIn</a>
-        <a href="https://www.facebook.com/share/1CMwsWVoQK/" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-300 transition-colors">Facebook</a>
-        <a href="mailto:samirali.tech88@gmail.com" class="hover:text-cyan-300 transition-colors">Email</a>
-        <a href="#about" class="hover:text-cyan-300 transition-colors">Top &uarr;</a>
-      </div>
+  <!-- FOOTER BAR -->
+  <footer class="max-w-6xl mx-auto px-5 sm:px-8 pb-10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/50">
+    <div class="flex items-center gap-2">
+      <span class="font-marker text-base text-white">SOLO</span>
+      <span>|</span>
+      <span>&copy; 2026 All rights reserved by Samir.</span>
     </div>
+    <a href="#home" class="font-mono hover:text-limePop transition-colors">Back to top &uarr;</a>
   </footer>
-
-  <!-- Back to Top Floating Button -->
-  <button id="back-to-top" type="button" aria-label="Back to top"
-    class="fixed bottom-6 right-6 z-40 p-3 rounded-2xl bg-surface/95 border border-white/15 text-cyan-300 shadow-xl shadow-black/50 opacity-0 translate-y-4 pointer-events-none hover:bg-cyan-500/20 hover:border-cyan-400/50 transition-all duration-300">
-    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
-    </svg>
-  </button>
 
   <!-- Toast Notification -->
   <div id="toast" role="status" aria-live="polite"
-    class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-5 py-3 rounded-2xl bg-surface/95 border border-cyan-400/40 text-sm font-medium text-white shadow-2xl shadow-black/60 opacity-0 translate-y-4 pointer-events-none transition-all duration-300">
+    class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-5 py-3 rounded-full bg-limePop text-ink text-xs font-extrabold shadow-2xl opacity-0 translate-y-4 pointer-events-none transition-all duration-300">
   </div>
 
-  <!-- Main JavaScript -->
+  <!-- Main JS -->
   <script src="js/main.js"></script>
 </body>
 

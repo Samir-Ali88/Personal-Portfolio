@@ -1,51 +1,45 @@
-/* Custom Enhancements & Deep Night Sky Theme */
+/* Comic / Illustrated Dark Mode — Smooth GPU Animations */
 
-:root {
-  --spotlight-color: rgba(6, 182, 212, 0.10);
-}
-
-/* Deep Night Sky Gradient (Dark, Matte, Calm) */
-.night-sky-bg {
-  background:
-    radial-gradient(ellipse at 20% 15%, rgba(24, 34, 68, 0.35) 0%, transparent 55%),
-    radial-gradient(ellipse at 80% 80%, rgba(30, 20, 56, 0.28) 0%, transparent 55%),
-    linear-gradient(180deg, #02040a 0%, #050814 55%, #03050c 100%);
-}
-
-/* Custom Dark Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #03050c;
+  background: #0b0b0f;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #06b6d4, #8b5cf6);
+  background: #2b2b38;
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #22d3ee, #a78bfa);
+  background: #c8ff00;
 }
 
-/* Glassmorphic Navbar */
-.glass-nav {
-  background: rgba(8, 12, 26, 0.78);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+/* Active Nav Link with Lime Underline (matching reference) */
+.nav-link {
+  position: relative;
 }
 
-/* Active Nav Link */
 .nav-link.active {
-  color: #67e8f9;
-  background: rgba(6, 182, 212, 0.12);
+  color: #ffffff;
 }
 
-/* Typing Cursor Blink */
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 3px;
+  border-radius: 9999px;
+  background: #c8ff00;
+}
+
+/* Typing Cursor */
 .typing-cursor {
-  animation: blink 0.9s step-end infinite;
+  animation: blink 0.85s step-end infinite;
 }
 
 @keyframes blink {
@@ -53,12 +47,26 @@
   50% { opacity: 0; }
 }
 
-/* Scroll Reveal Transitions */
+/* Smooth Floating Doodles */
+.doodle-float {
+  animation: doodleFloat 4.5s ease-in-out infinite;
+}
+
+.doodle-float-slow {
+  animation: doodleFloat 6s ease-in-out infinite;
+}
+
+@keyframes doodleFloat {
+  0%, 100% { transform: translateY(0px) rotate(-4deg); }
+  50% { transform: translateY(-8px) rotate(2deg); }
+}
+
+/* Smooth Scroll Reveal */
 .reveal {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+  transform: translateY(26px);
+  transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: opacity, transform;
 }
 
@@ -67,86 +75,41 @@
   transform: translateY(0);
 }
 
-.reveal-delay-1 { transition-delay: 90ms; }
-.reveal-delay-2 { transition-delay: 180ms; }
-.reveal-delay-3 { transition-delay: 270ms; }
-
-/* Cursor Spotlight Card Effect */
-.spotlight-card {
-  position: relative;
-  overflow: hidden;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+.reveal-delay-2 {
+  transition-delay: 140ms;
 }
 
-.spotlight-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    380px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    var(--spotlight-color),
-    transparent 60%
-  );
-  opacity: 0;
-  transition: opacity 0.35s ease;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.spotlight-card:hover::before {
-  opacity: 1;
-}
-
-.spotlight-card > * {
-  position: relative;
-  z-index: 1;
+/* Project Card Lift */
+.project-card:hover {
+  transform: translateY(-6px);
 }
 
 /* Skill Filter Buttons */
 .skill-filter {
-  color: #94a3b8;
-  background: rgba(255, 255, 255, 0.04);
-  border-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+  background: #0b0b0f;
+  border-color: rgba(255, 255, 255, 0.12);
 }
 
 .skill-filter:hover {
-  color: #f8fafc;
-  border-color: rgba(6, 182, 212, 0.45);
+  color: #ffffff;
+  border-color: #c8ff00;
 }
 
 .skill-filter.active {
-  color: #ffffff;
-  background: linear-gradient(135deg, rgba(6, 182, 212, 0.22), rgba(139, 92, 246, 0.22));
-  border-color: rgba(34, 211, 238, 0.6);
+  color: #0b0b0f;
+  background: #c8ff00;
+  border-color: #c8ff00;
 }
 
-/* Project Tech Badges */
-.tech-badge {
-  display: inline-block;
-  padding: 0.3rem 0.7rem;
-  border-radius: 0.65rem;
-  font-family: "JetBrains Mono", monospace;
-  font-size: 0.72rem;
-  color: #cbd5e1;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: border-color 0.25s ease, color 0.25s ease;
-}
-
-.tech-badge:hover {
-  color: #67e8f9;
-  border-color: rgba(6, 182, 212, 0.45);
-}
-
-/* Respect Reduced Motion Preferences */
 @media (prefers-reduced-motion: reduce) {
   .reveal {
     opacity: 1;
     transform: none;
     transition: none;
   }
-  .animate-float,
+  .doodle-float,
+  .doodle-float-slow,
   .typing-cursor {
     animation: none !important;
   }
